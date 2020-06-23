@@ -36,6 +36,15 @@ class TodoAPIService implements TodoService {
       apiMethods.post
     )
   }
+
+  async postTodoAPI(requestObject) {
+    return networkCallWithApisauce(
+      this.api,
+      endpoints.todos.postTodo,
+      requestObject,
+      apiMethods.post
+    )
+  }
 }
 
 export default TodoAPIService

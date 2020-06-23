@@ -11,6 +11,9 @@ class TodoStore {
   todoService: TodoService
   @observable getTodoListAPIStatus!: APIStatus
   @observable getTodoListAPIError!: Error | null
+  @observable postTodoAPIStatus!: APIStatus
+  postTodoAPiResponse!: string
+  @observable postTodoAPIError!: Error | null
   @observable todos!: Array<TodoModel>
 
   constructor(todoService: TodoService) {
@@ -50,6 +53,29 @@ class TodoStore {
     return bindPromiseWithOnSuccess(getTodosPromise)
       .to(this.setGetTodoListAPIStatus, this.setTodoListResponse)
       .catch(this.setGetTodoListAPIError)
+  }
+
+  @action.bound
+  setGetPostTodoAPIStatus(status) {
+    this.getTodoListAPIStatus = status
+  }
+
+  @action.bound
+  setGetPostTodoAPIError(error) {
+    this.getTodoListAPIError = error
+  }
+
+  @action.bound
+  setPostTodoTodoResponse(response) {
+    this.postTodoAPiResponse = response
+  }
+
+  @action.bound
+  postTodo(requestObject: TodoObject) {
+    const getTodosPromise = this.todoService.postTodoAPI(requestObject)
+    return bindPromiseWithOnSuccess(getTodosPromise)
+      .to(this.setGetPostTodoAPIStatus, this.setPostTodoTodoResponse)
+      .catch(this.setGetPostTodoAPIError)
   }
 
   @action.bound

@@ -72,6 +72,7 @@ class TodosRoute extends Component<TodosRouteProps> {
           ref={this.todoInputRef}
           onAddInput={this.onAddTodo}
           buttonText='Add Todo'
+          todoStore={this.getTodoStore()}
         />
         <TodoList todos={todos} />
         <TodoFooter todosLeftCount={todosLeftCount} />

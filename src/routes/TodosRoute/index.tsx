@@ -65,7 +65,7 @@ class TodosRoute extends Component<TodosRouteProps> {
     const { todos, todosLeftCount } = this.getTodoStore()
     return (
       <TodosWrapper>
-        <RefDemoButton onClick={this.getCurrentTodo}>
+        <RefDemoButton css={{ border: "100px solid red" }} onClick={this.getCurrentTodo}>
           Add current todo
         </RefDemoButton>
         <UserInput

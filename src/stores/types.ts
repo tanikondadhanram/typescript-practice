@@ -20,3 +20,7 @@ export interface GetTodosResponse {
   todos: Array<TodoObject>
   total: number
 }
+
+export interface PostTodosResponse {
+  message: string
+}

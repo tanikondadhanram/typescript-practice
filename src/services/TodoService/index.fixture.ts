@@ -12,6 +12,10 @@ class TodoFixtureService implements TodoService {
   updateTodoCompletionAPI() {
     return resolveWithTimeout({})
   }
+
+  postTodoAPI(requestObject) {
+    return resolveWithTimeout({ message: 'success' })
+  }
 }
 
 export default TodoFixtureService

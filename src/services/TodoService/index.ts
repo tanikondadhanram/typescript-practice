@@ -1,4 +1,8 @@
-import { TodoObject, UpdateCompletionStatusRequest } from '../../stores/types'
+import {
+  TodoObject,
+  UpdateCompletionStatusRequest,
+  PostTodosResponse
+} from '../../stores/types'
 
 interface TodoService {
   getTodosAPI: () => Promise<Array<TodoObject>>
@@ -6,6 +10,8 @@ interface TodoService {
   updateTodoCompletionAPI: (
     requestObject: UpdateCompletionStatusRequest
   ) => Promise<{}>
+
+  postTodoAPI: (requestObject: TodoObject) => Promise<PostTodosResponse>
 }
 
 export default TodoService

@@ -2,12 +2,15 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { observable, action } from 'mobx'
 
+import TodoStore from '../../stores/TodoStore'
 import { isEnterKeyEvent } from '../../utils/AppUtils'
+
 import { UserInputButton, UserTextInput } from './styledComponents'
 
 type UserInputProps = {
   onAddInput: (userInput: string) => any
   buttonText: string
+  todoStore: TodoStore
 }
 
 @observer
@@ -45,6 +48,11 @@ class UserInput extends Component<UserInputProps> {
   onKeyDown = event => {
     if (isEnterKeyEvent(event)) {
       this.onAddInput()
+      this.props.todoStore.postTodo({
+        id: 1,
+        title: this.userInput,
+        isCompleted: false
+      })
     }
   }
 
